@@ -59,14 +59,14 @@
 			</element>
 		</group>
 		<group name="g_input_password" switch="0">
-			<short_description>Agent Password</short_description>
-			<long_description>Agent side password (Windows Agent only)</long_description>
+			<short_description>Windows Agent Password</short_description>
+			<long_description>Windows Agent Password</long_description>
 			<element name='password' parameter_type='input' data_type='string'
 			gui_basic='1' range_type='0' units=''>
 				<control_options>size:8</control_options>
 				<default_value></default_value>
-				<short_description>Password</short_description>
-				<long_description>Agent side password (Windows Agent only)</long_description>
+				<short_description>Windows Agent Password</short_description>
+				<long_description>Windows Agent Password</long_description>
 				<validation_rule/>
 				<error_message/>
 				<gui_type>
