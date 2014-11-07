@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uptime xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="4.0" target_grouping="other">
+	<class>Enhanced Log Monitor</class>
+	<exec>com.uptimesoftware.uptime.erdc.MonitorCustomScriptRunner</exec>
+	<erdc_version>1.0</erdc_version>
+    <category>Operating System Monitors</category>
+    <category_related>Applications - General</category_related>
+    <grid_info>
+        <supported_versions>7.3</supported_versions>
+        <supported_platforms>windows, linux</supported_platforms>
+        <upgrade_in_place>true</upgrade_in_place>
+        <requires_agent_scripts>true</requires_agent_scripts>
+    </grid_info>
+	<elements>
+		<element name="process_windows" parameter_type="input" data_type="string" gui_basic="1" range_type="0" hidden="true">
+			<control_options> size:40 </control_options>
+			<default_value>plugins/scripts/MonitorLogFile/log_monitor-ms.bat</default_value>
+			<short_description>Script Name</short_description>
+			<long_description>Name of the script/binary/process to be executed by up.time </long_description>
+			<validation_rule>
+				<alphanumeric/>
+			</validation_rule>
+			<error_message>
+				<alphanumeric>required field</alphanumeric>
+			</error_message>
+			<gui_type>
+				<string/>
+			</gui_type>
+		</element>
+		<element name="process_linux" parameter_type="input" data_type="string" gui_basic="1" range_type="0" hidden="true">
+			<control_options> size:40 </control_options>
+			<default_value>plugins/scripts/MonitorLogFile/log_monitor-ms.sh</default_value>
+			<short_description>Script Name</short_description>
+			<long_description>Name of the script/binary/process to be executed by up.time </long_description>
+			<validation_rule>
+				<alphanumeric/>
+			</validation_rule>
+			<error_message>
+				<alphanumeric>required field</alphanumeric>
+			</error_message>
+			<gui_type>
+				<string/>
+			</gui_type>
+		</element>
+		<group name="g_input_port" switch="0">
+			<short_description>Port</short_description>
+			<long_description>up.time Agent Port</long_description>
+			<element name='port' parameter_type='input' data_type='integer'
+			gui_basic='1' range_type='0' units=''>
+				<control_options>size:8</control_options>
+				<default_value>9998</default_value>
+				<short_description>Port</short_description>
+				<long_description>up.time agent port</long_description>
+				<validation_rule/>
+				<error_message/>
+				<gui_type>
+					<integer/>
+				</gui_type>
+			</element>
+		</group>
+		<group name="g_input_password" switch="0">
+			<short_description>Agent Password</short_description>
+			<long_description>Agent side password (Windows Agent only)</long_description>
+			<element name='password' parameter_type='input' data_type='string'
+			gui_basic='1' range_type='0' units=''>
+				<control_options>size:8</control_options>
+				<default_value></default_value>
+				<short_description>Password</short_description>
+				<long_description>Agent side password (Windows Agent only)</long_description>
+				<validation_rule/>
+				<error_message/>
+				<gui_type>
+					<password/>
+				</gui_type>
+			</element>
+		</group>
+		<group name="g_input_dir" switch="0">
+			<short_description>Logs Directory</short_description>
+			<long_description>Directory where log(s) reside</long_description>
+			<element name='dir' parameter_type='input' data_type='string'
+			gui_basic='1' range_type='0' units=''>
+				<control_options>size:8</control_options>
+				<default_value>/var/log</default_value>
+				<short_description>Log Directory</short_description>
+				<long_description>Directory where log(s) reside</long_description>
+				<validation_rule/>
+				<error_message/>
+				<gui_type>
+					<string/>
+				</gui_type>
+			</element>
+		</group>
+		<group name="g_input_files_regex" switch="0">
+			<short_description>Log Files to Search (regex)</short_description>
+			<long_description>Filenames of logs to look through (regex compatible)</long_description>
+			<element name='files_regex' parameter_type='input' data_type='string'
+			gui_basic='1' range_type='0' units=''>
+				<control_options>size:8</control_options>
+				<default_value>messages.*</default_value>
+				<short_description>Log Files to Search (regex)</short_description>
+				<long_description>Filenames of logs to look through (regex compatible)</long_description>
+				<validation_rule/>
+				<error_message/>
+				<gui_type>
+					<string/>
+				</gui_type>
+			</element>
+		</group>
+		<group name="g_input_search_regex" switch="0">
+			<short_description>Search String (regex)</short_description>
+			<long_description>String to look for in the log file (regex compatible)</long_description>
+			<element name='search_regex' parameter_type='input' data_type='string'
+			gui_basic='1' range_type='0' units=''>
+				<control_options>size:8</control_options>
+				<default_value></default_value>
+				<short_description>Search String (regex)</short_description>
+				<long_description>String to look for in the log file (regex compatible)</long_description>
+				<validation_rule/>
+				<error_message/>
+				<gui_type>
+					<string/>
+				</gui_type>
+			</element>
+		</group>
+		<group name="g_input_ignore_regex" switch="0">
+			<short_description>Ignore String (regex)</short_description>
+			<long_description>String to ignore in the log file (regex compatible)</long_description>
+			<element name='ignore_regex' parameter_type='input' data_type='string'
+			gui_basic='1' range_type='0' units=''>
+				<control_options>size:8</control_options>
+				<default_value></default_value>
+				<short_description>Ignore String (regex)</short_description>
+				<long_description>String to ignore in the log file (regex compatible)</long_description>
+				<validation_rule/>
+				<error_message/>
+				<gui_type>
+					<string/>
+				</gui_type>
+			</element>
+		</group>
+		<group name="g_input_debug_mode" switch="0">
+			<element name="debug_mode" parameter_type="input" data_type="string" gui_basic="1" range_type="0">
+				<control_options> size:4 </control_options>
+				<default_value/>
+				<short_description>Debug Mode</short_description>
+				<long_description>In debug mode, the log monitor will search the previous 1000 lines from the bookmark position (plus any new lines).</long_description>
+				<gui_type>
+					<single_select type="radio">
+						<value>Off</value>
+						<value>On</value>
+					</single_select>
+				</gui_type>
+			</element>
+		</group>
+		<group name="g_output_total_count" switch="0">
+			<short_description>Occurrences</short_description>
+			<long_description>Number of occurrences of the search string found since the last check</long_description>
+			<element name='total_count' parameter_type='output' data_type='integer'
+			gui_basic='1' range_type='0' units='Total #'>
+				<control_options>size:8</control_options>
+				<default_value></default_value>
+				<short_description>Occurrences</short_description>
+				<long_description>Number of occurrences of the search string found since the last check</long_description>
+				<validation_rule/>
+				<error_message/>
+				<gui_type>
+					<integer/>
+				</gui_type>
+			</element>
+		</group>
+		<group name="timerresult" switch="0">
+			<short_description/>
+			<long_description/>
+			<element name="timer" parameter_type="output" data_type="integer" gui_basic="0"
+				range_type="0" units="ms">
+				<control_options>size:8</control_options>
+				<default_value/>
+				<short_description>Response time</short_description>
+				<long_description>Response time in ms</long_description>
+				<validation_rule/>
+				<error_message/>
+				<gui_type>
+					<integer/>
+				</gui_type>
+			</element>
+		</group>	
+	</elements>
+	<help>The Log File Monitor will search for a given string in desired text files residing on an Agent system.  On each run, the Log File Monitor will check a bookmark file located on the Agent system and only search lines in the text file newer than the bookmark.  If Debug is enabled in the monitor, then the previous 1000 lines will also be searched.</help>
+</uptime>
