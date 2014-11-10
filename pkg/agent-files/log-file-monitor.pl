@@ -21,6 +21,8 @@ use Data::Dumper;  # for debugging the criteria and bookmark hashes
 
 use Cwd            qw( abs_path );
 use File::Basename qw( dirname );
+use Fcntl 'O_RDONLY';
+
 
 ##############################################################################
 # get current working directory to determine if this is Windows or *nix
@@ -185,9 +187,11 @@ for $i ( 0 .. ($numfiles - 1) ) {
 
     ##################################################
     # read file into @logfileArray
-    tie @logfileArray, 'Tie::File', "$criteria{filename}[$i]" || 
-      print("Warning: Could not open file " . $criteria{filename}[$i] .
-        ". Skipping file.\n");
+    tie @logfileArray, 'Tie::File', "$criteria{filename}[$i]", mode => O_RDONLY;
+    if ( !defined( $logfileArray[0] ) ) { 
+        print("Warning: Could not open file " . $criteria{filename}[$i] . 
+          ". Skipping file.\n");
+    }
     $logfile_eof = scalar @logfileArray;    # get the EOF position
 
     
@@ -263,6 +267,7 @@ open ( BOOKMARK, '>' . $bookmarkfile ) ||
   die ("Error: Could not open bookmark file, $bookmarkfile, for writing!");
 my $line;
 $i=0;
+#print "Writing to bookmark file\n";
 #print Dumper(@bookmark);
 for $i ( 0 .. ( $newnumbookmarks - 1) ) {
     $line = "filename:$bookmark[$i]{filename};";
