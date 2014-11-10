@@ -7,3 +7,4 @@
 
 # Declare files that will always have unix/LF line endings on checkout.
 *.sh text eol=lf
+*.pl text eol=lf
