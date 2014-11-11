@@ -27,10 +27,11 @@ function agentcmd($host, $port, $cmd, $timeout = 55) {
 		if (!$resource) {
 			//fsockopen failed
 			echo "No connection established. Error: " . $errorstr . "[" . $errorno . "]\n";
+			exit(3);
 		} else {
 			// successfully opened a socket
 			fwrite($resource, $cmd);
-			//while there is data to read from $resource…
+			//while there is data to read from $resourceâ€¦
 			while (!feof($resource)) {
 				//read the data, 2048 bytes at a time and echo it out to stdout
 				$rv .= fgets($resource, 2048);
