@@ -41,7 +41,7 @@ b. Open the up.time Agent Console and click on Advanced > Custom Scripts
 c. Enter the following 
 (change <perl_dir> to the proper Perl path; ex. C:\Strawberry\perl\bin\perl.exe):
 Command Name:   log-file-monitor
-Path to Script: cmd.exe /c "<perl_dir> "C:\Program Files (x86)\uptime software\up.time agent\scripts\log-file-monitor.pl""
+Path to Script: cmd.exe /c "{PERL_DIR} "C:\Program Files (x86)\uptime software\up.time agent\scripts\log-file-monitor.pl""
 
 
 3. Examples
